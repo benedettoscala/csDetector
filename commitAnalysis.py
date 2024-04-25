@@ -96,7 +96,7 @@ def commit_batch_analysis(
     logger.info("Analyzing commits")
     start_date = None
     if config.startDate is not None:
-        start_date = datetime.strptime(config.start_date, "%Y-%m-%d")
+        start_date = datetime.strptime(config.startDate, "%Y-%m-%d")
         start_date = start_date.replace(tzinfo=pytz.UTC)
     # sort commits
     commits.sort(key=lambda o: o.committed_datetime, reverse=True)
