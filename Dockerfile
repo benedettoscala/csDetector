@@ -24,14 +24,9 @@ WORKDIR /app
 COPY . /app
 
 RUN mkdir out
-RUN mkdir senti
-
-ADD http://sentistrength.wlv.ac.uk/jkpop/SentiStrength.jar senti
-ADD http://sentistrength.wlv.ac.uk/jkpop/SentiStrength_Data.zip senti
 
 RUN apt-get update && apt-get install -y unzip
-RUN unzip senti/SentiStrength_Data.zip -d senti/SentiStrength_Data
-RUN rm senti/SentiStrength_Data.zip
+
 
 RUN python3.8 -m pip install --upgrade pip setuptools wheel
 RUN python3.8 -m pip install --upgrade pip
@@ -46,4 +41,4 @@ RUN echo "import nltk;" > nltk_setup.py \
 
 EXPOSE 5001
 
-CMD ["python3.8", "webService/csDetectorWebService.py"]
+CMD ["python3.8", "csDetectorWebService.py"]
