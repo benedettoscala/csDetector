@@ -29,7 +29,11 @@ def get_repo(config: Configuration):
     Clona o aggiorna il repository locale in base alla configurazione.
     """
     # Percorso del repository locale
-    repo_path = config.repositoryPath
+    # build path
+    repo_path = os.path.join(
+        config.repositoryPath,
+        "{}.{}".format(config.repositoryOwner, config.repositoryName),
+    )
 
     # Determina il branch principale
     default_branch = get_default_branch(config)
