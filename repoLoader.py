@@ -52,10 +52,6 @@ def get_repo(config: Configuration):
         print()
     else:
         repo = git.Repo(repo_path, odbt=git.GitCmdObjectDB)
-        logger.info("Aggiornamento del repository...")
-        repo.remotes.origin.fetch()
-        repo.git.checkout(default_branch)
-        repo.git.pull()
 
     return repo
 
